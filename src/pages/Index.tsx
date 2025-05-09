@@ -6,7 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import Header from "@/components/Header";
 import ConversationList from "@/components/ConversationList";
 import ChatWindow from "@/components/ChatWindow";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -71,7 +71,7 @@ const Index = () => {
   };
   
   return (
-    <div className="flex flex-col h-screen bg-white overflow-hidden">
+    <div className="flex flex-col h-[100dvh] bg-white overflow-hidden">
       <Header 
         showSidebar={showSidebar} 
         toggleSidebar={() => setShowSidebar(!showSidebar)} 
@@ -80,7 +80,7 @@ const Index = () => {
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         {(showSidebar || !isMobile) && (
-          <div className={`${isMobile ? 'absolute inset-y-0 left-0 z-20 w-72 bg-white h-[calc(100%-56px)] mt-14' : 'w-80'}`}>
+          <div className={`${isMobile ? 'absolute inset-y-0 left-0 z-20 w-72 bg-white h-[calc(100dvh-56px)] mt-14' : 'w-80'}`}>
             <ScrollArea className="h-full">
               <ConversationList
                 conversations={conversations}
@@ -107,9 +107,9 @@ const Index = () => {
       {/* New Conversation Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
+          <DialogTitle>Nova Conversa</DialogTitle>
           <div className="grid gap-4 py-4">
             <div className="space-y-2">
-              <h2 className="text-lg font-medium">Nova Conversa</h2>
               <p className="text-sm text-gray-500">
                 Dê um nome para a nova conversa.
               </p>
