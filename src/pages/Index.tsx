@@ -9,6 +9,7 @@ import ChatWindow from "@/components/ChatWindow";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const Index = () => {
   const {
@@ -70,7 +71,7 @@ const Index = () => {
   };
   
   return (
-    <div className="flex flex-col h-screen bg-white">
+    <div className="flex flex-col h-screen bg-white overflow-hidden">
       <Header 
         showSidebar={showSidebar} 
         toggleSidebar={() => setShowSidebar(!showSidebar)} 
@@ -79,20 +80,22 @@ const Index = () => {
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         {(showSidebar || !isMobile) && (
-          <div className={`${isMobile ? 'absolute inset-y-0 left-0 z-20 w-80 bg-white h-[calc(100%-56px)] mt-14' : 'w-80'}`}>
-            <ConversationList
-              conversations={conversations}
-              activeConversationId={activeConversation?.id || null}
-              onNewConversation={handleNewConversation}
-              onSelectConversation={handleSelectConversation}
-              onDeleteConversation={handleDeleteConversation}
-              onRenameConversation={renameConversation}
-            />
+          <div className={`${isMobile ? 'absolute inset-y-0 left-0 z-20 w-72 bg-white h-[calc(100%-56px)] mt-14' : 'w-80'}`}>
+            <ScrollArea className="h-full">
+              <ConversationList
+                conversations={conversations}
+                activeConversationId={activeConversation?.id || null}
+                onNewConversation={handleNewConversation}
+                onSelectConversation={handleSelectConversation}
+                onDeleteConversation={handleDeleteConversation}
+                onRenameConversation={renameConversation}
+              />
+            </ScrollArea>
           </div>
         )}
         
         {/* Chat Window */}
-        <div className="flex-1">
+        <div className="flex-1 overflow-hidden">
           <ChatWindow
             conversation={activeConversation}
             isAgentTyping={isAgentTyping}

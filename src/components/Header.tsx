@@ -27,18 +27,23 @@ export default function Header({ showSidebar, toggleSidebar }: HeaderProps) {
         )}
         
         <div className="flex items-center">
+          {/* On mobile, show only the logo */}
           <img 
             src="/lovable-uploads/524cc768-98d2-4c01-a333-c10ebd3c7b4f.png" 
             alt="Fiorella Logo" 
-            className="h-6 mr-2" 
+            className="h-8 md:h-6 mr-2" 
           />
-          <h1 className="font-bold text-lg text-fiorella-primary">Fiorella Empório Delivery</h1>
+          {!isMobile && (
+            <h1 className="font-bold text-lg text-fiorella-primary">Fiorella Empório Delivery</h1>
+          )}
         </div>
       </div>
       
-      <div className="text-xs text-gray-500">
-        Sistema de Chat - Teste de Agente Inteligente
-      </div>
+      {!isMobile && (
+        <div className="text-xs text-gray-500">
+          Sistema de Chat - Teste de Agente Inteligente
+        </div>
+      )}
     </div>
   );
 }
