@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				fiorella: {
+					primary: '#D0021B',
+					secondary: '#FFFFFF',
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,11 +89,20 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                typing: {
+                    '0%': { width: '0%' },
+                    '20%': { width: '20%' },
+                    '40%': { width: '40%' },
+                    '60%': { width: '60%' },
+                    '80%': { width: '80%' },
+                    '100%': { width: '100%' }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                typing: 'typing 1.5s infinite ease-in-out'
 			}
 		}
 	},

@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,9 +96,18 @@
 @layer base {
   * {
     @apply border-border;
+    font-family: 'Montserrat', sans-serif;
   }
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .message-bubble-agent {
+    @apply bg-gray-100 text-gray-800 rounded-r-lg rounded-tl-lg;
+  }
+
+  .message-bubble-user {
+    @apply bg-fiorella-primary text-white rounded-l-lg rounded-tr-lg;
   }
 }
