@@ -1,7 +1,7 @@
 
 import { Message } from "@/types/chat";
 
-const N8N_ENDPOINT = "https://seu-n8n-instance.com/webhook/fiorella-agent";
+const N8N_ENDPOINT = "https://n8n.liberato.pro.br/webhook/fiorella";
 
 export async function sendMessageToAgent(conversationId: string, message: string): Promise<Message> {
   try {
@@ -22,11 +22,12 @@ export async function sendMessageToAgent(conversationId: string, message: string
 
     const data = await response.json();
     
+    
     // Normally, we'd use the real response from n8n here
     // For testing purposes, we'll simulate a response
     return {
       id: Math.random().toString(36).substring(2, 11),
-      text: data.response || "Olá! Como posso ajudar você hoje?",
+      text: data.output || "Olá! Como posso ajudar você hoje?",
       sender: "agent",
       timestamp: Date.now(),
       delivered: true,
@@ -35,12 +36,12 @@ export async function sendMessageToAgent(conversationId: string, message: string
     console.error("Erro ao enviar mensagem:", error);
     
     // For demo purposes, we'll return a simulated response
-    return {
-      id: Math.random().toString(36).substring(2, 11),
-      text: "Olá! Sou o assistente virtual da Fiorella. Como posso te ajudar hoje?",
-      sender: "agent",
-      timestamp: Date.now(),
-      delivered: true,
-    };
+    // return {
+    //   id: Math.random().toString(36).substring(2, 11),
+    //   text: "Olá! Sou o assistente virtual da Fiorella. Como posso te ajudar hoje?",
+    //   sender: "agent",
+    //   timestamp: Date.now(),
+    //   delivered: true,
+    // };
   }
 }
