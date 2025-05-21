@@ -1,7 +1,7 @@
 
 import { Message } from "@/types/chat";
 
-const N8N_ENDPOINT = "https://n8n.liberato.pro.br/webhook/fiorella";
+const N8N_ENDPOINT = "https://n8n.liberato.pro.br/webhook/fiorella-chat";
 
 export async function sendMessageToAgent(conversationId: string, message: string): Promise<Message> {
   try {
